@@ -26,10 +26,27 @@
     />
     <meta name="twitter:card" content="summary" />
     <!-- Bootstrap CSS -->
+    <script>
+      function handleError(type, url) {
+        console.error("cdn 加载失败，切换到本地");
+        let fallback = null;
+        if (type == "css") {
+          fallback = document.createElement("link");
+          fallback.rel = "stylesheet";
+          fallback.href = url;
+          document.head.appendChild(fallback);
+        } else {
+          fallback = document.createElement("script");
+          fallback.src = url;
+          document.body.appendChild(fallback);
+        }
+      }
+    </script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
       crossorigin="anonymous"
       rel="stylesheet"
+      onerror="handleError('css','assets-new/css/plugins/bootstrap.min.css');"
     />
     <!--=====FAB ICON=======-->
     <link
@@ -97,6 +114,7 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-NR3TF22");
     </script>
+
     <!-- End Google Tag Manager -->
   </head>
   <body class="homepage4-body">
@@ -1736,12 +1754,14 @@
         <span class="close" onclick="JwSpecialEntrance.closeBanner();"></span>
       </div>
     </div>
+
     <script src="/assets-new/js/banner.js"></script>
 
     <!--===== JS SCRIPT LINK =======-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
+      onerror="handleError('script','assets-new/js/plugins/bootstrap.bundle.min.js')"
     ></script>
     <script src="assets-new/js/plugins/aos.js"></script>
     <script src="assets-new/js/plugins/counter.js"></script>
